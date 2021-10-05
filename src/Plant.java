@@ -1,5 +1,3 @@
-
-
 public class Plant
 {
     //Instance Variables
@@ -43,11 +41,18 @@ public class Plant
     public int getGrowthLevel(){return this.growthLevel;}
     public char[][] getPlot(){return this.plot;}
 
+    /**
+     * This method will be overridden by the subclasses
+     * @param num number of times to grow
+     */
     public void grow(int num)
     {
         //Subclasses will implement a specific growth patten on their own
     }
 
+    /**
+     * This method increments the growthLevel field by one when called
+     */
     public void incrementGrowLevel(){this.growthLevel++;}
 
     /**
@@ -63,6 +68,21 @@ public class Plant
     }
 
     /**
+     * This overloaded version of the method copies a predefined pattern to the plot
+     * @param chars the plot to be copied into the object
+     */
+    public void updatePlot(char[][] chars)
+    {
+        for(int i=0;i<chars.length;i++)
+        {
+            for(int j=0;j<chars[i].length;j++)
+            {
+                this.plot[i][j] = chars[i][j];
+            }
+        }
+    }
+
+    /**
      * This method prints a single row of the plot. Will be called
      * to print the entire garden
      * @param row is the row to print
@@ -73,7 +93,10 @@ public class Plant
             System.out.print(c);
     }
 
-
+    /**
+     * This private method fills the plot with the 'empty' character;
+     * we are using '.' to represent an empty cell
+     */
     private void intializePlot()
     {
         for(int i  = 0; i<this.plot.length;i++)
@@ -104,5 +127,4 @@ public class Plant
         }
         return value;
     }
-
 }

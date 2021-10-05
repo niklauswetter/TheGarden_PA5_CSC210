@@ -1,5 +1,9 @@
 public class Tree extends Plant
 {
+    /**
+     * Constructor
+     * @param name name of the Tree object to be created
+     */
     public Tree(String name)
     {
         super(name);
@@ -27,6 +31,4 @@ public class Tree extends Plant
         super.updatePlot(5-super.getGrowthLevel(),2,super.getSymbol());
         this.grow(num);
     }
-
-
 }

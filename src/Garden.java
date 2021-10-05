@@ -1,35 +1,49 @@
-import java.awt.*;
-
 public class Garden
 {
     //Data
-    int row, col;
+    private int row, col;
     private Plant[][] gardenArray;
 
     //Methods
+
+    /**
+     * Constructor
+     * @param row rows in garden
+     * @param col columns in garden
+     * @throws Exception fileNotFound
+     */
     public Garden(int row, int col) throws Exception {
         this.row = row;
         this.col = col;
-        if(row<1 || col<1 || col>16)
-            throw new Exception("Garden dimensions must be positive, no more than " +
-                    "16 columns wide.");
+        if(row<1 || col<1)
+        {
+
+        }
+        if(col>16)
+        {
+            System.out.println("Too many plot columns.");
+            System.exit(0);
+        }
         this.gardenArray = new Plant[this.row][this.col];
         this.initializeGarden();
     }
 
+    /**
+     * Getters
+     */
+    public Plant[][] getGardenArray(){return this.gardenArray;}
+    public int getRow(){return this.row;}
+    public int getCol(){return this.col;}
+
+    /**
+     * This method adds a plant to the garden
+     * @param row row in which to add plant
+     * @param col column in which to add plant
+     * @param plant the plant object to be added
+     */
     public void addPlant(int row, int col, Plant plant)
     {
         this.gardenArray[row][col] = plant;
-    }
-
-    /**
-     * This method will be called whenever a plant is removed for some reason
-     * @param row the row of the plant to be removed
-     * @param col the column of the plant to be removed
-     */
-    public void removePlant(int row, int col)
-    {
-        this.gardenArray[row][col]= new Plant();
     }
 
     /**
@@ -37,6 +51,7 @@ public class Garden
      */
     public void printGarden()
     {
+        System.out.println("> PRINT");
         for(int i =0; i< this.row;i++)
         {
             for(int j = 0; j<5; j++)
@@ -46,6 +61,7 @@ public class Garden
                 System.out.println();
             }
         }
+        System.out.println();
     }
 
     /**
@@ -61,5 +77,4 @@ public class Garden
             }
         }
     }
-
 }
