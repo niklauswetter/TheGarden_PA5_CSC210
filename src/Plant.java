@@ -32,7 +32,7 @@ public class Plant
         this.intializePlot();
         this.name="DEFAULT";
         this.symbol='.';
-        this.growthLevel = 0;
+        this.growthLevel = 1;
     }
 
     /**
@@ -40,13 +40,15 @@ public class Plant
      */
     public String getName(){return this.name;}
     public char getSymbol(){return this.symbol;}
+    public int getGrowthLevel(){return this.growthLevel;}
     public char[][] getPlot(){return this.plot;}
 
     public void grow(int num)
     {
-
         //Subclasses will implement a specific growth patten on their own
     }
+
+    public void incrementGrowLevel(){this.growthLevel++;}
 
     /**
      * This method updates the plant plot, since all subclass objects will
@@ -68,7 +70,7 @@ public class Plant
     public void printLine(int row)
     {
         for(char c:this.plot[row])
-            System.out.print(c+" ");
+            System.out.print(c);
     }
 
 
